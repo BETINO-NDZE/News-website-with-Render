@@ -10,6 +10,12 @@ if (!$host || !$port || !$dbname || !$user || !$password) {
     die("One or more environment variables are not set properly.");
 }
 
+echo "Host: " . getenv("PGHOST") . "<br>";
+echo "Port: " . getenv("PGPORT") . "<br>";
+echo "DB: " . getenv("PGDATABASE") . "<br>";
+echo "User: " . getenv("PGUSER") . "<br>";
+echo "Password: " . getenv("PGPASSWORD") . "<br>";
+
 // Build connection string
 $connStr = "host=$host port=$port dbname=$dbname user=$user password=$password sslmode=require";
 
