@@ -1,25 +1,17 @@
 <?php
-// Parse database URL from environment variable
-$dbUrl = getenv("DATABASE_URL");
-if (!$dbUrl) {
-    die("DATABASE_URL not set in environment.");
-}
+// Use Railway environment variables (or hardcode for testing)
+$host = getenv("postgres.railway.internal") ?: "containers-us-west-1.railway.app";
+$port = getenv("5432") ?: "1234"; // replace with your actual port
+$dbname = getenv("railway") ?: "railway";
+$user = getenv("postgres") ?: "postgres";
+$password = getenv("PGPASSWORD") ?: "LeSCgoEGVGnWHrrbcqiVVmXZgWsMRyqk";
 
-$dbParts = parse_url($dbUrl);
-
-// Extract credentials
-$host = $dbParts["ep-lively-butterfly-a6xxbzff.us-west-2.aws.neon.tech"];
-$port = $dbParts["5432"] ?? 5432;
-$user = $dbParts["neondb_owner"];
-$password = $dbParts["npg_70EgmMDWkzef"];
-$dbname = ltrim($dbParts["neondb"], '/');
-
-// Connect to PostgreSQL
+// PostgreSQL connection string
 $connStr = "host=$host port=$port dbname=$dbname user=$user password=$password sslmode=require";
 $conn = pg_connect($connStr);
 
 if ($conn) {
-    echo "Connected to Neon PostgreSQL successfully!";
+    echo "Connected to Railway PostgreSQL successfully!";
 } else {
     die("Connection failed: " . pg_last_error());
 }
