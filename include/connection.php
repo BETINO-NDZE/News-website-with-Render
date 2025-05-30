@@ -1,11 +1,10 @@
 <?php
-$host = 'db.cofvbrhcjspfjtbqundb.supabase.co';
-$port = '5432';
-$dbname = 'postgres';
-$user = 'postgres'; // copy from your pooler connection string
-$password = 'VfRQps1SW4XWnVe5';    // your Supabase password
+$host = getenv("aws-0-eu-central-1.pooler.supabase.com");
+$port = getenv("6543");
+$dbname = getenv("postgres");
+$user = getenv("postgres.cofvbrhcjspfjtbqundb");
+$password = getenv("VfRQps1SW4XWnVe5");
 
-// PostgreSQL connection string
 $connStr = "host=$host port=$port dbname=$dbname user=$user password=$password sslmode=require";
 $conn = pg_connect($connStr);
 
