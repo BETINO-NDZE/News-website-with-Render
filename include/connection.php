@@ -5,7 +5,15 @@ $dbname = getenv("postgres");
 $user = getenv("postgres.cofvbrhcjspfjtbqundb");
 $password = getenv("VfRQps1SW4XWnVe5");
 
+// Debug (optional, remove in production)
+if (!$host || !$port || !$dbname || !$user || !$password) {
+    die("One or more environment variables are not set properly.");
+}
+
+// Build connection string
 $connStr = "host=$host port=$port dbname=$dbname user=$user password=$password sslmode=require";
+
+// Connect
 $conn = pg_connect($connStr);
 
 if ($conn) {
