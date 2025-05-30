@@ -1,18 +1,18 @@
 # Dockerfile
 FROM php:8.2-apache
 
-# Install dependencies for PostgreSQL PDO
+# Install dependencies
 RUN apt-get update && apt-get install -y \
     libpq-dev \
-    && docker-php-ext-install pdo pdo_pgsql
+    && docker-php-ext-install pdo pdo_pgsql pgsql
 
-# Copy your app files into the container
+# Enable Apache mod_rewrite if needed
+RUN a2enmod rewrite
+
+# Copy your code
 COPY . /var/www/html/
 
-# (Optional) Set correct permissions, configure Apache, etc.
+# Set proper permissions
+RUN chown -R www-data:www-data /var/www/html
 
-# Set permissions (optional)
-RUN chown -R www-data:www-data /var/www/html/
-
-# Expose the default Apache port
 EXPOSE 80
