@@ -3,7 +3,7 @@ $host = getenv("aws-0-eu-central-1.pooler.supabase.com");
 $port = getenv("6543");
 $dbname = getenv("postgres");
 $user = getenv("postgres.cofvbrhcjspfjtbqundb");
-$password = getenv("VfRQps1SW4XWnVe5");
+$password = getenv("yiDhcmXqZ8rlySx9");
 
 // Debug (optional, remove in production)
 if (!$host || !$port || !$dbname || !$user || !$password) {
