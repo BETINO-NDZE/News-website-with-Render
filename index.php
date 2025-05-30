@@ -22,7 +22,7 @@
 
     <!-- end navbar -->
 
-    <!-- marquee -->
+    <!-- marquee --> 
     <marquee>
         🔥 Breaking News: Latest updates on global events | Stock markets rise | New tech trends in AI...
     </marquee>
